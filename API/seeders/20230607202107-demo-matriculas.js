@@ -1,3 +1,6 @@
+'use strict';
+
+/** @type {import('sequelize-cli').Migration} */
 module.exports = {
   up: (queryInterface, Sequelize) => {
 		return queryInterface.bulkInsert('Matriculas', [
@@ -50,3 +53,4 @@ module.exports = {
 		return queryInterface.bulkDelete('Matriculas', null, {})
   }
 }
+
