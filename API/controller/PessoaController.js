@@ -11,6 +11,16 @@ class PessoaController {
         }
       
     }
+
+    static async pegaUmaPessoa(req,res) {
+            const {id} = req.params;
+        try {
+            const UnicaPessoa = await database.Pessoas.findOne({ where: {id: Number(id)}})
+            res.status(200).json(UnicaPessoa)
+        } catch (error) {
+            res.status(500).json(error.message)
+        }
+    }
 }
 
 
