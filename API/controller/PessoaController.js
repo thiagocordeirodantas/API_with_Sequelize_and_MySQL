@@ -31,6 +31,29 @@ class PessoaController {
             res.status(500).json(error.message)
         }
     }
+
+    static async atualizaRegistro(req,res) {
+        const {id} = req.params;
+        const atualizador = req.body;
+        try {
+            await database.Pessoas.update(atualizador,{where:{id: Number(id)}})
+            const pessoaAtualizada = await database.Pessoas.findOne({ where: {id: Number(id)}})
+
+            return res.status(200).json(pessoaAtualizada)
+        } catch (error){
+            res.status(500).json(error.message);
+        }
+    }
+
+    static async apagaPessoa(req,res) {
+        const {id} = req.params;
+        try {
+            await database.Pessoas.destroy({where: {id: Number(id)}})
+            return res.status(200).json(`A pessoa com o ID ${id} foi deletada`)
+        } catch(error){
+           return res.status(500).json(error.message)
+        }
+    }
 }
 
 
