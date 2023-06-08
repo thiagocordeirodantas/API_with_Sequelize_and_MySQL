@@ -21,6 +21,17 @@ class MatriculasController {
         }
      }
 
+     static async criaMatricula(req,res){
+        const adiciona = req.body
+        try {
+            const matriculaAdicionada = await database.Matriculas.create(adiciona)
+            return res.status(200).json(matriculaAdicionada)
+
+        } catch(error){
+            res.status(500).json(error.message)
+        }
+     }
+
      static async atualizaMatricula(req,res){
         const { id } = req.params
         const atualiza = req.body
