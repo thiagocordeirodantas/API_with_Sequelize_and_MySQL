@@ -8,6 +8,5 @@ router.get('/pessoas/:id', PessoaController.pegaUmaPessoa);
 router.post('/pessoas', PessoaController.criaPessoa);
 router.put('/pessoas/:id', PessoaController.atualizaRegistro);
 router.delete('/pessoas/:id',PessoaController.apagaPessoa);
-
-
+router.post('/pessoas/:idr/restaura', PessoaController.restauraPessoa)
 module.exports = router;
